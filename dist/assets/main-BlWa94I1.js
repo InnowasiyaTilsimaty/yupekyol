@@ -1,1 +1,0 @@
-import{c as t,j as e,R as r,I as s,i as n,B as i,A as o}from"./i18next-DxKCbYAp.js";t.createRoot(document.getElementById("root")).render(e.jsx(r.StrictMode,{children:e.jsx(s,{i18n:n,children:e.jsx(i,{future:{v7_startTransition:!0},children:e.jsx(o,{})})})}));
