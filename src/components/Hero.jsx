@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import HeroImg from "../assets/img/heroImg.jpg";
-import HeroImg2 from "../assets/img/heroImg2.jpg";
+import HeroImg2 from "../assets/img/hero31.jpg";
 import { useState, useEffect } from "react";
 import {
   breakpoints,
@@ -13,7 +12,6 @@ import MasketText from "../common/MasketText";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-
 const Hero = () => {
   const [isAnimationEnabled, setIsAnimationEnabled] = useState(true);
   const { t } = useTranslation();
@@ -24,58 +22,51 @@ const Hero = () => {
     };
 
     // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Initial check for screen size
     setIsAnimationEnabled(window.innerWidth > 768);
 
     // Clean up event listener
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
-
     <HeroStyled>
       <div className="heroContainer">
         <div className="heroCol">
-          <div className="headerMotto">
+          <motion.div
+            className="headerMotto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 80,
+              damping: 20,
+              duration: 1,
+              delay: 4.2,
+            }}
+          >
             <div className="headerTitle">
               <h1>
-                <MasketText text={text} enterDelay={4.2} backgroundColor="#3a776396" />
+                <MasketText text={text} enterDelay={4.2} />
               </h1>
             </div>
             <div className="heroText">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 80,
-                  damping: 20,
-                  duration: 1,
-                  delay: 4.2,
-                }}
-              >
-                <p>
-                {t("5")}
-                </p>
-              </motion.div>
+              <div>
+                <p>{t("5")}</p>
+              </div>
             </div>
-            
-          </div>
+          </motion.div>
         </div>
       </div>
-
     </HeroStyled>
-
   );
 };
 
 export default Hero;
-
-
 
 const HeroStyled = styled.section`
   background-image: url(${HeroImg2});
@@ -84,21 +75,22 @@ const HeroStyled = styled.section`
   background-size: cover;
   .headerMotto {
     max-width: 820px;
+    background-color: #bb9d5386;
+    padding: 5px;
+    border-radius: 12px;
   }
   .headerTitle {
     h1 {
       font-size: 58px;
       line-height: 86px;
-      margin-bottom: 30px;
-      
+      margin-bottom: 20px;
     }
   }
   .heroText {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     p {
       color: #fff;
-      font-size: ${textSizes[18]};
-      background-color: ${colors.accentColor};
+      font-size: ${textSizes[22]};
       padding: 5px;
       border-radius: 5px;
     }

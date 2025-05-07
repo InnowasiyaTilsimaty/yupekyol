@@ -38,7 +38,7 @@ const MasketTextStyles = styled.div`
 .lineMask p{
   margin: 0px;
   font-weight: 700;
-  color: ${colors.backgroundColor};
+  color: ${colors.white};
   background-color: ${(props) => (props.$backgroundColor ? props.$backgroundColor : "none")};
 }
 `

@@ -1,53 +1,28 @@
-import { Suspense, lazy, useEffect, useState } from "react";
-const About = lazy(() => import("./components/About"));
-const Catalog = lazy(() => import("./components/Catalog"));
-const Contacts = lazy(() => import("./components/Contacts"));
-const Footer = lazy(() => import("./components/Footer"));
-const Header = lazy(() => import("./components/Header"));
-const Hero = lazy(() => import("./components/Hero"));
-import PageWrapper from "./components/ScrollProvider";
+import { Suspense, lazy, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+
+const Home = lazy(() => import("./pages/Home"));
+const Products = lazy(() => import("./pages/OtherProducts"));
+
 import GlobalStyles from "./styles/global";
 import "./styles/styles.css";
-import Preloader from "./components/Preloader";
-import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
-import Services from "./components/Services";
 
 function App() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-  const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
-    (async () => {
-      setTimeout(() => {
-        setIsLoading(false);
-        document.body.style.cursor = "default";
-        window.scrollTo(0, 0);
-      }, 3500);
-    })();
-  }, []);
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <>
       <GlobalStyles />
-      <motion.div className="progress-bar" style={{ scaleX }} />
-      <PageWrapper>
-        <AnimatePresence mode="wait">
-          {isLoading && <Preloader />}
-        </AnimatePresence>
-        <Header />
-        <Hero />
-        <Suspense fallback={<h1>.</h1>}>
-          <About />
-          <Services />
-          <Catalog />
-          {/* <Contacts /> */}
-          <Footer />
-        </Suspense>
-      </PageWrapper>
+      <Suspense>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }

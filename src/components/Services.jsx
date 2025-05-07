@@ -24,9 +24,7 @@ const Services = () => {
     <ServicesStyles>
       <div className="servicesContainer">
         <div className="serviceTitleTop">
-          <Reavel>
-            <span>{t("21")}</span>
-          </Reavel>
+          <span>{t("21")}</span>
         </div>
         <div className="servicesCol">
           <motion.div
@@ -43,7 +41,7 @@ const Services = () => {
             <div className="serviceTitle">{t("21")}</div>
             <div className="serviceDesc">{t("22")}</div>
           </motion.div>
-          <motion.div
+          {/* <motion.div
             className="serviceItem"
             initial="hidden"
             whileInView="visible"
@@ -52,7 +50,7 @@ const Services = () => {
             custom={0.7}
           >
             <div className="serviceImg">
-              <img src={serviceImg4} alt="serviceImg2" />
+              <img src={serviceImg4} alt="serviceImg4" />
             </div>
             <div className="serviceTitle">{t("23")}</div>
             <div className="serviceDesc">{t("24")}</div>
@@ -70,14 +68,14 @@ const Services = () => {
             </div>
             <div className="serviceTitle">{t("231")}</div>
             <div className="serviceDesc">{t("241")}</div>
-          </motion.div>
+          </motion.div> */}
           <motion.div
             className="serviceItem"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            custom={1}
+            custom={0.7}
           >
             <div className="serviceImg">
               <img src={serviceImg3} alt="serviceImg3" />
@@ -100,16 +98,18 @@ const ServicesStyles = styled.div`
   }
   .serviceTitleTop {
     margin-bottom: 15px;
+    text-align: center;
     span {
       color: ${colors.accentColor};
-      font-size: ${textSizes[18]};
+      font-size: ${textSizes[22]};
+      font-weight: 600;
     }
   }
   .servicesCol {
     margin-top: 40px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 50px;
     justify-content: center;
   }
 

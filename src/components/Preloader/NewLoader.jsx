@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import loaderImg from "../../assets/img/favicon.png"
-
+import { breakpoints } from "../../styles/vars";
 const NewLoader = () => {
   return (
     <NewLoaderStyles>
@@ -24,6 +24,17 @@ const NewLoaderStyles = styled.div`
       img{
         width: 100px;
       }
+    }
+    ${breakpoints.mobileL}{
+      .loaderText{
+        font-size: 22px;
+      }
+      .loaderImg{
+      margin-right: 20px;
+      img{
+        width: 80px;
+      }
+    }
     }
    
   

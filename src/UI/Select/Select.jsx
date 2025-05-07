@@ -58,9 +58,9 @@ const SliderStyled = styled.div`
     position: relative;
     user-select: none;
     .dropdownBtn {
-      background-color: ${colors.accentColor};
+      background-color: #bb9d53;
       padding: 15px 24px;
-      border: 1px solid ${colors.accentColor};
+      border: 1px solid #bb9d53;
       border-radius: 12px;
       cursor: pointer;
       color: ${colors.white};
@@ -77,7 +77,7 @@ const SliderStyled = styled.div`
       transition: all 0.3s ease;
       border-radius: 12px;
       padding: 10px;
-      background-color: ${colors.accentColor};
+      background-color: #bb9d53;
       z-index: 100;
       color: ${colors.white};
       width: 100%;
@@ -91,7 +91,7 @@ const SliderStyled = styled.div`
         cursor: pointer;
         &:hover{
             color: ${colors.white};
-            background-color: ${colors.additionalColor};
+            background-color: #a1802f;
         }
       }
     }

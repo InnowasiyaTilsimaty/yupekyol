@@ -1,4 +1,4 @@
-import{j as e,m,d as l,g as h,r as x,u,t as n,b,q as c,e as s}from"./i18next-vKD2ZA47.js";import{P as d}from"./index-Ce6cBIBd.js";const f="/assets/heroImg2-DaZJ6wp9.jpg",g=({text:o,enterDelay:i,backgroundColor:r})=>{const a={initial:{y:"100%"},enter:t=>({y:"0",transition:{duration:.75,ease:[.33,1,.68,1],delay:.075*t+i}})};return e.jsx(v,{$backgroundColor:r,children:o.map((t,p)=>e.jsx("div",{className:"lineMask",children:e.jsx(m.p,{custom:p,variants:a,initial:"initial",animate:"enter",children:t})},p))})};g.propTypes={text:d.array,enterDelay:d.number,backgroundColor:d.string};const v=h.div`
+import{j as e,a as m,u as h,r as x,t as n,m as u,s as l,b as s}from"./i18next-DxKCbYAp.js";import{P as d}from"./index-xh3ILbnE.js";import{h as c,j as b}from"./motion-Cf0AUs4q.js";const f="/assets/hero31-DLqg2Xe2.jpg",g=({text:i,enterDelay:r,backgroundColor:o})=>{const a={initial:{y:"100%"},enter:t=>({y:"0",transition:{duration:.75,ease:[.33,1,.68,1],delay:.075*t+r}})};return e.jsx(v,{$backgroundColor:o,children:i.map((t,p)=>e.jsx("div",{className:"lineMask",children:e.jsx(c.p,{custom:p,variants:a,initial:"initial",animate:"enter",children:t})},p))})};g.propTypes={text:d.array,enterDelay:d.number,backgroundColor:d.string};const v=h.div`
     .lineMask{
   overflow: hidden;
 }
@@ -6,45 +6,46 @@ import{j as e,m,d as l,g as h,r as x,u,t as n,b,q as c,e as s}from"./i18next-vKD
 .lineMask p{
   margin: 0px;
   font-weight: 700;
-  color: ${l.backgroundColor};
-  background-color: ${o=>o.$backgroundColor?o.$backgroundColor:"none"};
+  color: ${m.white};
+  background-color: ${i=>i.$backgroundColor?i.$backgroundColor:"none"};
 }
-`,$=()=>{const[o,i]=x.useState(!0),{t:r}=u(),a=[r("4")];return x.useEffect(()=>{const t=()=>{i(window.innerWidth>768)};return window.addEventListener("resize",t),i(window.innerWidth>768),()=>{window.removeEventListener("resize",t)}},[]),e.jsx(k,{children:e.jsx("div",{className:"heroContainer",children:e.jsx("div",{className:"heroCol",children:e.jsxs("div",{className:"headerMotto",children:[e.jsx("div",{className:"headerTitle",children:e.jsx("h1",{children:e.jsx(g,{text:a,enterDelay:4.2,backgroundColor:"#3a776396"})})}),e.jsx("div",{className:"heroText",children:e.jsx(m.div,{initial:{opacity:0,y:30},animate:{opacity:1,y:0},transition:{type:"spring",stiffness:80,damping:20,duration:1,delay:4.2},children:e.jsx("p",{children:r("5")})})})]})})})})},k=h.section`
+`,k=()=>{const[i,r]=x.useState(!0),{t:o}=b(),a=[o("4")];return x.useEffect(()=>{const t=()=>{r(window.innerWidth>768)};return window.addEventListener("resize",t),r(window.innerWidth>768),()=>{window.removeEventListener("resize",t)}},[]),e.jsx(w,{children:e.jsx("div",{className:"heroContainer",children:e.jsx("div",{className:"heroCol",children:e.jsxs(c.div,{className:"headerMotto",initial:{opacity:0,y:30},animate:{opacity:1,y:0},transition:{type:"spring",stiffness:80,damping:20,duration:1,delay:4.2},children:[e.jsx("div",{className:"headerTitle",children:e.jsx("h1",{children:e.jsx(g,{text:a,enterDelay:4.2})})}),e.jsx("div",{className:"heroText",children:e.jsx("div",{children:e.jsx("p",{children:o("5")})})})]})})})})},w=h.section`
   background-image: url(${f});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   .headerMotto {
     max-width: 820px;
+    background-color: #bb9d5386;
+    padding: 5px;
+    border-radius: 12px;
   }
   .headerTitle {
     h1 {
       font-size: 58px;
       line-height: 86px;
-      margin-bottom: 30px;
-      
+      margin-bottom: 20px;
     }
   }
   .heroText {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     p {
       color: #fff;
-      font-size: ${n[18]};
-      background-color: ${l.accentColor};
+      font-size: ${n[22]};
       padding: 5px;
       border-radius: 5px;
     }
   }
   .heroContainer {
-    ${b.main}
+    ${u.main}
   }
   .heroCol {
-    ${c.between}
+    ${l.between}
     height: 100vh;
   }
   .headerServices {
     max-width: 500px;
-    background-color: ${l.orange};
+    background-color: ${m.orange};
     padding: 40px;
   }
   .headerServicesTitle {
@@ -55,7 +56,7 @@ import{j as e,m,d as l,g as h,r as x,u,t as n,b,q as c,e as s}from"./i18next-vKD
     }
   }
   .serCol {
-    ${c.center}
+    ${l.center}
     max-width: 350px;
   }
   .serImg {
@@ -147,4 +148,4 @@ import{j as e,m,d as l,g as h,r as x,u,t as n,b,q as c,e as s}from"./i18next-vKD
       padding: 15px;
     }
   }
-`;export{$ as default};
+`;export{k as default};

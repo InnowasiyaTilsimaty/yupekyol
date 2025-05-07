@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import logo from "../assets/img/logo.png";
-import logoShort from "../assets/img/favicon.png";
+
+import logoShort from "../assets/img/favicon1.png";
 import {
   breakpoints,
   colors,
@@ -12,8 +12,10 @@ import {
 import Select from "../UI/Select/Select";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-
-const Header = () => {
+import { useNavigate, useLocation  } from "react-router-dom";
+const Header = ({delayTime}) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { t, i18n } = useTranslation();
   const [click, setClick] = useState(false);
   const handleClick = () => {
@@ -37,53 +39,60 @@ const Header = () => {
 
   return (
     <HeaderStyled>
-      <motion.div
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          type: "spring",
-          stiffness: 80,
-          damping: 20,
-          duration: 1,
-          delay: 4.3,
-        }}
-        className="header"
-      >
-        <div className="headerCol">
-          <div className="headerLogo">
-            <div className="logo">
-              <img src={logoShort} alt="logo" />
+      <div className="headerContainer">
+        <motion.div
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 80,
+            damping: 20,
+            duration: 1,
+            delay: delayTime,
+          }}
+          className="header"
+        >
+          <div className="headerCol">
+            <div className="headerLogo" onClick={() => navigate("/")}>
+              <div className="logo">
+                <img src={logoShort} alt="logo" />
+              </div>
+              <div className="logoText">
+                <div>Ýüpek Ýol Harytlary</div>
+              </div>
             </div>
-            <div className="logoText">
-              <div>Ýüpek Ýol Harytlary</div>
+            <div className="headerNav">
+              <ul className={click ? "navbarCol active" : "navbarCol"}>
+              {location.pathname !== "/products" && (
+                  <li onClick={() => scrollToContacts("aboutUs")}>
+                    {t("1")}
+                  </li>
+                )}
+                <li onClick={() => navigate("/products")}>
+                {t("2")}
+                </li>
+                <li onClick={() => scrollToContacts("contacts")}>{t("3")}</li>
+                <li>
+                  <div>
+                    <Select
+                      items={items}
+                      initialValue={
+                        i18n.language === "ru" ? "Русский" : "English"
+                      }
+                      onEdit={(value) => changeLanguage(value)}
+                    />
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div onClick={handleClick} className={click ? "btn active" : "btn"}>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
           </div>
-
-          <div className="headerNav">
-            <ul className={click ? "navbarCol active" : "navbarCol"}>
-              <li onClick={() => scrollToContacts("aboutUs")}>{t("1")}</li>
-              <li onClick={() => scrollToContacts("catalog")}>{t("2")}</li>
-              <li onClick={() => scrollToContacts("contacts")}>{t("3")}</li>
-              <li>
-                <div>
-                  <Select
-                    items={items}
-                    initialValue={
-                      i18n.language === "ru" ? "Русский" : "English"
-                    }
-                    onEdit={(value) => changeLanguage(value)}
-                  />
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div onClick={handleClick} className={click ? "btn active" : "btn"}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </HeaderStyled>
   );
 };
@@ -91,9 +100,12 @@ const Header = () => {
 export default Header;
 
 const HeaderStyled = styled.header`
-  max-width: 1400px;
-  padding: 15px 10px;
-  margin: 0 auto;
+  background-color: #fdeedd;
+  .headerContainer {
+    max-width: 1400px;
+    padding: 15px 10px;
+    margin: 0 auto;
+  }
   .headerCol {
     ${flex.between}
   }
@@ -107,11 +119,11 @@ const HeaderStyled = styled.header`
   .logo {
     width: 70px;
   }
-  .logoText{
+  .logoText {
     font-size: 24px;
     margin-left: 10px;
     font-weight: 600;
-    color: ${colors.accentColor};
+    color: #bb9d53;
   }
   .headerNav {
     .navbarCol {
@@ -120,10 +132,11 @@ const HeaderStyled = styled.header`
         font-size: ${textSizes[22]};
         ${fontWeights[600]}
         line-height: ${textSizes[26]};
+        color: #bb9d53;
         transition: all 0.3s ease-in-out;
         cursor: pointer;
         &:hover {
-          color: ${colors.accentColor};
+          color: #8b6c1d;
         }
         &:not(:first-child) {
           margin-left: 100px;
@@ -135,8 +148,6 @@ const HeaderStyled = styled.header`
     display: none;
   }
   ${breakpoints.laptopL} {
-    padding: 30px 10px;
-
 
     .headerNav {
       .navbarCol {
@@ -152,12 +163,15 @@ const HeaderStyled = styled.header`
     }
   }
   ${breakpoints.laptop} {
+
     padding: 20px 10px;
     position: fixed;
     width: 100%;
     background-color: #fff;
     z-index: 10;
-
+.headerContainer{
+  padding: 0px;
+}
     .headerLogo {
       .logoText {
         font-size: ${textSizes[24]};

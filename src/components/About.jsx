@@ -32,17 +32,21 @@ const About = () => {
             </div>
             <div className="aboutTitle">
               <Reavel>
-              <h3>{t("7")}</h3>
+                <h3>{t("7")}</h3>
               </Reavel>
             </div>
             <div className="aboutText">
               <Reavel>
-              <p>{t("8")}<br /><br />
+                <p>
+                  {t("8")}
+                  <br />
+                  <br />
                   <span className="aboutListDot"></span> {t("9")} <br />
                   <span className="aboutListDot"></span> {t("10")} <br />
                   {/* <span className="aboutListDot"></span> {t("11")} <br /> */}
                   <span className="aboutListDot"></span> {t("12")} <br />
-                  <span className="aboutListDot"></span> {t("13")} <br /><br />
+                  <span className="aboutListDot"></span> {t("13")} <br />
+                  <br />
                   {t("14")} <br />
                   {/* <span className="aboutListDot"></span> {t("15")} <br /> */}
                   <span className="aboutListDot"></span> {t("16")} <br />
@@ -58,31 +62,27 @@ const About = () => {
         </div>
       </div>
       <div className="aboutBottomMain">
-      <motion.div
-        className="clientsNumberMain"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <div className="aboutTopCol">
-          {stats.map((stat, index) => (
-            <React.Fragment key={index}>
-              <CountUpItem title={stat.title} value={stat.value} />
-              {index !== stats.length - 1 && <Divider type="vertical" />}
-            </React.Fragment>
-          ))}
-        </div>
-      </motion.div>
+        <motion.div
+          className="clientsNumberMain"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <div className="aboutTopCol">
+            {stats.map((stat, index) => (
+              <React.Fragment key={index}>
+                <CountUpItem title={stat.title} value={stat.value} />
+                {index !== stats.length - 1 && <Divider type="vertical" />}
+              </React.Fragment>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </AboutStyles>
   );
 };
 
 export default About;
-
-
-
-
 
 const CountUpItem = ({ title, value }) => {
   const ref = useRef(null);
@@ -118,7 +118,7 @@ const CountUpItem = ({ title, value }) => {
 
 const AboutStyles = styled.section`
   .aboutContainer {
-    ${mainContainer.small}
+    ${mainContainer.main}
     padding: 60px 10px;
   }
   .aboutCol {
@@ -154,10 +154,11 @@ const AboutStyles = styled.section`
     }
   }
 
-  .aboutVideoSide{
-    width: 450px;
+  .aboutVideoSide {
+    max-width: 700px;
+    width: 100%;
   }
-  .aboutListDot{
+  .aboutListDot {
     display: inline-block;
     width: 8px;
     height: 8px;
@@ -190,11 +191,9 @@ const AboutStyles = styled.section`
     font-weight: 400;
     line-height: 36.46px;
   }
-  .aboutBottomMain{
+  .aboutBottomMain {
     ${mainContainer.main}
   }
-
-
 
   ${breakpoints.laptop} {
     .aboutContainer {
@@ -216,22 +215,21 @@ const AboutStyles = styled.section`
         font-size: ${textSizes[16]};
       }
     }
-    
   }
   ${breakpoints.tablet} {
     .aboutCol {
       flex-direction: column;
       align-items: center;
     }
-    
+
     .aboutTopCol {
-        margin: 20px 0px;
-        display: flex;
-        gap: 20px;
-        flex-direction: column;
+      margin: 20px 0px;
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
     }
     .ant-divider-vertical {
-        display: none;
+      display: none;
     }
   }
   ${breakpoints.mobileL} {
@@ -242,6 +240,9 @@ const AboutStyles = styled.section`
     .aboutTextSide {
       max-width: none;
       margin-right: 0px;
+    }
+    .aboutVideoSide {
+      margin-top: 30px;
     }
     .aboutTitle {
       margin-bottom: 10px;
@@ -255,6 +256,5 @@ const AboutStyles = styled.section`
         font-size: 15px;
       }
     }
-    
   }
 `;
