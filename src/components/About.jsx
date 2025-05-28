@@ -232,6 +232,8 @@ const AboutStyles = styled.section`
       display: none;
     }
   }
+
+  
   ${breakpoints.mobileL} {
     .aboutContainer {
       margin-top: 50px;
